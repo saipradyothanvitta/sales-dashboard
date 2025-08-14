@@ -8,8 +8,17 @@ import os
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sales_data.db'
+# NEW, BETTER CODE
+import os
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url.replace("postgres://", "postgresql://", 1)
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/sales.db'
 db = SQLAlchemy(app)
+# ... after db = SQLAlchemy(app)
+with app.app_context():
+    db.create_all()
 
 # --- 1. Database Model ---
 class Sale(db.Model):
