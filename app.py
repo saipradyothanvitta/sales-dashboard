@@ -5,6 +5,7 @@ from datetime import datetime
 import pandas as pd
 import random
 import os
+from models import Sale
 
 app = Flask(__name__)
 CORS(app)
