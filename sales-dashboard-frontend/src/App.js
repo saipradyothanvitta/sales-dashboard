@@ -33,7 +33,13 @@ function App() {
 
   // 1. Fetch the list of companies on component mount
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/companies')
+    // NEW CORRECT CODE
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000';
+
+      // Make sure your fetch call uses this new apiUrl variable
+      fetch(`${apiUrl}/api/companies`)
+        .then(response => response.json())
+        // ... the rest of your code
       .then(response => response.json())
       .then(data => {
         setCompanies(data);
