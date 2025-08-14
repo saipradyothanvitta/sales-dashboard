@@ -1,0 +1,204 @@
+/* --- Base and Global Styles --- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.App-header {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 20px;
+  margin: -20px -20px 30px -20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.App-header h1 {
+  font-size: 2em;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* --- Controls --- */
+.dashboard-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.control-group label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.control-group select,
+.control-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 16px;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 200px;
+  transition: all 0.2s ease-in-out;
+}
+
+.control-group select:hover,
+.control-group input:hover,
+.control-group select:focus,
+.control-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* --- KPIs --- */
+.kpi-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.kpi-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex-grow: 1;
+  min-width: 180px;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hover animation for KPI cards */
+.kpi-card:hover {
+  transform: translateY(-5px); /* Lift the card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+.kpi-card h3 {
+  font-size: 1em;
+  color: #777;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.kpi-card p {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #343a40;
+  margin: 0;
+}
+
+/* --- Charts Layout --- */
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.chart-item {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex: 1 1 45%;
+  min-width: 300px;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hover animation for charts */
+.chart-item:hover {
+  transform: translateY(-5px); /* Lift the chart */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+.chart-item h3 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #343a40;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+/* --- Responsive Layout (Mobile) --- */
+@media (max-width: 768px) {
+  .dashboard-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .control-group input,
+  .control-group select {
+    max-width: none;
+  }
+  .chart-item {
+    flex: 1 1 100%;
+  }
+  .kpi-card {
+    min-width: 100%;
+  }
+}
+
+/* --- Skeleton Loading Animation --- */
+.skeleton-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.skeleton {
+  background: #f6f7f8;
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+  height: 200px;
+  width: 45%;
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+.skeleton-container .skeleton {
+  flex: 1 1 200px;
+  height: 100px;
+}
+
+.skeleton-container .skeleton:first-child {
+  flex: 1 1 100%;
+  height: 250px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/* Hide the skeleton for the KPI cards now that they have their own skeleton container */
+.kpi-container .skeleton {
+    display: none;
+}
